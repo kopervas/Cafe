@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -88,9 +89,9 @@ public class Controller implements Initializable {
         number_client = random.nextInt(6);
 
         fillFoods();
-        first_order.setGraphic(new ImageView("./resources/CafeNew/food/food-01.png"));
-        two_order.setGraphic(new ImageView("./resources/CafeNew/food/food-02.png"));
-        three_order.setGraphic((new ImageView("./resources/CafeNew/food/food-03.png")));
+        first_order.setGraphic(new ImageView(foods.get(0)));
+        two_order.setGraphic(new ImageView(foods.get(1)));
+        three_order.setGraphic(new ImageView(foods.get(2)));
 
         fillClients();
         ClientChangeFood(random.nextInt(2));
@@ -155,7 +156,7 @@ public class Controller implements Initializable {
         Random random = new Random();
         if(client_change == gamer_change)
         {
-            score +=100;
+            score +=10;
         }
         else{
             score -= 5;
@@ -185,6 +186,8 @@ public class Controller implements Initializable {
             ClientChangeFood(random.nextInt(2));
             results.setText("Кількість спроб " + total_attempt + ". Всього балів " + total_score);
             total_attempt += 1;
+            total_score += score;
+            score = 0;
         }
         else if(score > 200){
             try{
@@ -207,6 +210,8 @@ public class Controller implements Initializable {
             ClientChangeFood(random.nextInt(2));
             results.setText("Кількість спроб " + total_attempt + ". Всього балів " + total_score);
             total_attempt += 1;
+            total_score += score;
+            score = 0;
         }
     }
 
