@@ -28,3 +28,27 @@ public ImageButton() {
 16:40 20.06.2018
 Додав всі класи клієнтів, доопрацював методи. Залишилось реалізувати вибір клієнта (не грузиться зображення у відповідне поле)
 та обробки підрахунку балів, виведення їх у відповідних текстових елементах і перезавантаження гри.
+19:38 20.06.2018
+
+15:24 21.06.2018
+На даний час потрібно реалізувати метод Game(). У ньому треба зробити перевірки:
+	1. Перевірка загальної кількості балів - поле total_score;
+	2. Перевірка поточної кількості балів - поле score;
+	
+20:13 21.06.2018
+Пробував запускати спливаюче вікно наступним кодом:
+            try{
+                Stage stage = new Stage();
+                Parent root = FXMLLoader.load(getClass().getResource("../resources/wrong.fxml"));
+                stage.setTitle("Ви програли!");
+                stage.setMinHeight(150);
+                stage.setMinWidth(300);
+                stage.setResizable(false);
+                stage.setScene(new Scene(root));
+                stage.initModality(Modality.WINDOW_MODAL);
+                stage.initOwner(pane.getScene().getWindow());
+                stage.show();
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+Нічого не вийшло :(
