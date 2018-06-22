@@ -17,9 +17,9 @@ public class Boy implements Client {
 
     @Override
     public Image getEmotion(int i) {
-        if(i <= 0)
-            return icons.get(3);
-        return icons.get(1);
+/*        if(i <= 0)
+            return icons.get(3);*/
+        return icons.get(i);
     }
 
     @Override

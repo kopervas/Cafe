@@ -39,8 +39,6 @@ public class Controller implements Initializable {
     private int client_change = 0;
     //номер страви, яку обрав гравець
     private int gamer_change;
-    //кількість спроб гравця
-    private int count_attempt = 0;
     //кількість клієнтів, яку обслуговували - мабуть, це поле є зайвим
     private int count_clients = 0;
     //індекс клієнта, який генерується методом setClient()
@@ -100,7 +98,6 @@ public class Controller implements Initializable {
         ClientChangeFood(random.nextInt(3));                 //вибір першої страви першим клієнтом
 
         setClientFoto(number_client, 1);                         //виведення у поле client_foto зображення клієнта
-
 
         first_order.setOnAction(new javafx.event.EventHandler<ActionEvent>() {
             @Override
@@ -186,8 +183,8 @@ public class Controller implements Initializable {
      */
     private void checkScore(){
         Random random = new Random();
-        if (score > -200 && score < 100 ){
-            if(countClient() == true) {
+        if (score > -200 && score < 100 ){                                                  //перша умова - якщо  кількість балів
+            if(countClient() == true) {                                                     //лежить у допустимих межах, гра продовжується
                 //ClientChangeFood(random.nextInt(3));
                 results.setText("Кількість спроб " + total_attempt + ". Всього балів " + total_score);
             }
@@ -244,7 +241,7 @@ public class Controller implements Initializable {
             total_score += score;
             total_attempt += 1;
             score = 10;
-            System.out.println("Цикл № "+count_attempt/4 +" закінчився ");
+            System.out.println("Цикл № "+total_attempt +" закінчився ");
         }
         return false;
     }
@@ -292,7 +289,8 @@ public class Controller implements Initializable {
      */
     private void setClient(){
         Random rand = new Random();
-        number_client = rand.nextInt(6) - 1;
+        int i = rand.nextInt(6);
+        number_client = i - 1;
     }
 
     /**
